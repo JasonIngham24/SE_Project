@@ -1,4 +1,4 @@
-public class followRules {
+public class followRules{
     public static void main(String[] args){
         followTheRules();
     }
