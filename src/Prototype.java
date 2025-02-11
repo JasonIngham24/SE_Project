@@ -7,7 +7,7 @@ public class Prototype implements UserComputeEngineAPI{
 		System.out.println("Output Location: " + dest); 
 	}
 	
-	public static void main (String [] args) {
+	public static void main(String [] args) {
 		//getting user input from the command line 
 		//issue - implement local file reading 
 		
