@@ -1,5 +1,6 @@
+
 //import java.lang.NumberFormatException;
-import java.io.*; 
+//import java.io.*; 
 import java.nio.file.*; 
 import java.net.*; 
 import java.util.Scanner; 
@@ -64,44 +65,4 @@ public class Prototype{
 		return Files.exists(Paths.get(source)); //does file exist locally? 
 	}
 	
-	/*
-	public static void main(String [] args) {
-		//getting user input from the command line 
-		//issue - implement local file reading
-	
-		if (args.length != 3) { //expecting 3 arguments: a(n) (long?) int for the nth iteration of the fibonnaci sequence 
-								//a string for the input source, and a string for the output destination \
-			System.out.println("Correct format: java Prototype <integer> <delimiter> <output_destination>");
-			return; 
-		
-		}
-		*/ 
-	/*
-		if (args.length < 2 || args.length > 3) { //args length should either be 2 (inputsource and output dest) or 3 (plus delimiter)
-			System.out.print("Correct format: java Prototype <input_source> <output_dest> <delimiter> (optional)");
-			return; 
-			
-		}
-		
-		String source = args[0];
-		String dest = args[1];
-		String delimiter = (args.length == 3) ? args[2] : null; 
-		
-		Prototype ptype = new Prototype(); 
-		*/
-		/*
-		
-		try {
-			int iteration = Integer.parseInt(args[0]); //the iteration of the sequence of which all even ints will be added 
-			String delimiter = args[1]; //the delimiter the user will use to separate the numbers of the sequence 
-			String outputDest = args[2]; //the destination of the output 
-			
-			Prototype ptype = new Prototype(); 
-			ptype.processInputData(iteration, delimiter, outputDest);
-		} catch (NumberFormatException e) {
-			System.out.print("Error: first argument must be an integer"); 
-		}
-		*/ 
-	}
-
-
+}
