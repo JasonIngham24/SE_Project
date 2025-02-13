@@ -32,7 +32,7 @@ test {
     useJUnitPlatform()
     
       filter {
-        excludeTestsMatching "project.annotations.Assignment*"
+        excludeTestsMatching "Assignment*"
       }
 }
 
