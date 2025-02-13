@@ -1,7 +1,8 @@
-import java.util.Optional; 
-
+@NetworkAPI
 public interface UserComputeEngineAPI {
 	
-	public void processInputData(int iteration, String delimiter, String dest); 
+	@ProcessAPIPrototype
+	public InputProcessor processInputData(String source, String delimiter, String dest); 
+
 
 }
