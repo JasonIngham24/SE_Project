@@ -66,6 +66,3 @@ protobuf {
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '9.0' // Update to a compatible Gradle version
-}
