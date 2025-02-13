@@ -65,3 +65,7 @@ protobuf {
         all()*.plugins { grpc {} }
     }
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '9.0' // Update to a compatible Gradle version
+}

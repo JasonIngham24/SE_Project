@@ -24,6 +24,8 @@ public class Prototype{
 		System.out.println("Enter delimiter");
 		String delimiter = scanner.nextLine(); 
 		
+		
+		
 		/*
 		System.out.println("Iteration of Sequence: " + num);
 		System.out.println("Delimiter: " + delimiter); 
@@ -43,7 +45,7 @@ public class Prototype{
 			System.out.print("Unknown source type");
 		}
 		
-		api.processInputData(source, delimiter, dest);
+		InputProcessor ipp = api.processInputData(source, delimiter, dest);
 		
 		
 		
