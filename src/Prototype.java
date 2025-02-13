@@ -1,9 +1,9 @@
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.net.URL;
+import java.net.MalformedURLException;
+import java.util.Scanner;
 
-//import java.lang.NumberFormatException;
-//import java.io.*; 
-import java.nio.file.*; 
-import java.net.*; 
-import java.util.Scanner; 
 
 public class Prototype{
 	
