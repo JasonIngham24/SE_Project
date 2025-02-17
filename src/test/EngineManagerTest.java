@@ -2,16 +2,16 @@ package enginemangementapi;
 
 class EngineManagerTest implements EngineManagerAPI {
 
-	@Override
-	@Test
+	
+	@Test @Override
 	public void setData(int n) {
-		data = n;
+		int data = n;
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	@Test
+
+	@Test 	@Override
 	public int getData() {
 		// TODO Auto-generated method stub
 		if(data != null) {
@@ -21,8 +21,8 @@ class EngineManagerTest implements EngineManagerAPI {
 		return 0;
 	}
 
-	@Override
-	@Test
+
+	@Test 	@Override
 	public int sumOfNthEvenFibbonaciNums(int n) {
 		// TODO Auto-generated method stub
 		return 0;
