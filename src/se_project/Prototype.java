@@ -1,6 +1,9 @@
+package se_project;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.net.URL;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.Scanner;
 
@@ -45,7 +48,8 @@ public class Prototype{
 			System.out.print("Unknown source type");
 		}
 		
-		InputProcessor ipp = api.processInputData(source, delimiter, dest);
+		SourceHandler sourceHandler = api.sendInputSource(source, delimiter);
+		StorageHandler storageHanlder = api.sendOutputDest(dest); 
 		
 		
 		
@@ -53,6 +57,7 @@ public class Prototype{
 	
 	//method to check validity of specified network location 
 	//throws exception if URL is invalid 
+	
 	public boolean isNetworkLocation(String source) {
 		try { 
 			new URL(source); 
@@ -66,5 +71,15 @@ public class Prototype{
 	public boolean isLocalFile(String source) {
 		return Files.exists(Paths.get(source)); //does file exist locally? 
 	}
+
+	/*
+	@Override
+	public boolean isValidSource(String source) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	*/
+
+	
 	
 }

@@ -1,3 +1,5 @@
+package se_project;
+
 @ConceptualAPI
 public interface InputProcessor {
 	
