@@ -29,10 +29,12 @@ repositories {
 }
 
 test {
+
     useJUnitPlatform()
     
       filter {
         excludeTestsMatching "Assignment*"
+        setFailOnNoMatchingTests(false)
       }
 }
 
