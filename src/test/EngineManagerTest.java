@@ -1,4 +1,4 @@
-package /SE_Project/src/enginemangementapi/EngineManagerAPI.java;
+package src/enginemangementapi/EngineManagerAPI.java;
 
 class EngineManagerTest implements EngineManagerAPI {
 
