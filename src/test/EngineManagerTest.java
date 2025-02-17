@@ -1,4 +1,4 @@
-package src/enginemangementapi;
+package enginemangementapi;
 
 class EngineManagerTest implements EngineManagerAPI {
 
