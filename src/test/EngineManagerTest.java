@@ -14,11 +14,12 @@ class EngineManagerTest implements EngineManagerAPI {
 	@Test 
 	public int getData() {
 		// TODO Auto-generated method stub
+		int data = 1;
 		if(data != null) {
 			return null;
 			//handles nullpointer exception
 		}
-		return 0;
+		return 1;
 	}
 
 
