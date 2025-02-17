@@ -8,6 +8,5 @@ public interface EngineManagerAPI {
 	int getData();
 	int sumOfNthEvenFibbonaciNums(int n);
 	
-	
 
 }
