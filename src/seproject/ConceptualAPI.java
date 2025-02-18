@@ -1,4 +1,4 @@
-package se_project;
+package seproject;
 
 
 import java.lang.annotation.ElementType;

@@ -1,4 +1,4 @@
-package se_project;
+package seproject;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.net.URL;

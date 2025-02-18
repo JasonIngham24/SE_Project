@@ -1,4 +1,4 @@
-package se_project;
+package seproject;
 
 @ProcessAPI
 //interface to handle different types of input sources 

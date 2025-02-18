@@ -1,4 +1,4 @@
-package se_project;
+package seproject;
 
 @NetworkAPI
 public interface UserComputeEngineAPI {
