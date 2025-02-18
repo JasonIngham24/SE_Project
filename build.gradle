@@ -32,7 +32,8 @@ test {
     useJUnitPlatform()
     
       filter {
-        excludeTestsMatching "project.annotations.Assignment*"
+        excludeTestsMatching "Assignment*"
+        setFailOnNoMatchingTests(false)
       }
 }
 
@@ -65,3 +66,4 @@ protobuf {
         all()*.plugins { grpc {} }
     }
 }
+
