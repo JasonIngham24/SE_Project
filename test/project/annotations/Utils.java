@@ -1,4 +1,4 @@
-package seproject;
+package project.annotations;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,7 +1,5 @@
-package seproject;
+package project.annotations;
 
-
-import java.io.File;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -14,14 +12,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import seproject.ConceptualAPI;
-import seproject.ConceptualAPIPrototype;
-import seproject.NetworkAPI;
-import seproject.NetworkAPIPrototype;
-import seproject.ProcessAPI;
-import seproject.ProcessAPIPrototype;
-
-
 /**
  * This test checks that all 3 APIs exist in the 'src' folder as interfaces, with the appropriate annotations, and that they all
  * have corresponding prototypes, also with the appropriate annotations.
@@ -33,9 +23,10 @@ import seproject.ProcessAPIPrototype;
  */
 public class Assignment2StructureTest {
 	
-	@ParameterizedTest
+	@ParameterizedTest(name = ParameterizedTest.ARGUMENTS_PLACEHOLDER)
 	@MethodSource("providePrototypeParams")
-	public void checkPrototypesExist(Class<? extends Annotation> apiAnnotation, Class<? extends Annotation> prototypeAnnotation) throws Exception {
+	public void checkPrototypesExist(Class<? extends Annotation> apiAnnotation, 
+	        Class<? extends Annotation> prototypeAnnotation) throws Exception {
 		int numPrototypesFound = 0;
 		List<String> errors = new ArrayList<>();
 		for (Class<?> clazz : Utils.loadAllClasses()) {
@@ -62,7 +53,7 @@ public class Assignment2StructureTest {
 			
 		}
 		if (numPrototypesFound != 1) {
-			errors.add("No (or multiple) class method with the " + prototypeAnnotation.getSimpleName() + " annotation was found in 'src'");
+			errors.add("No (or more than one) class method with the " + prototypeAnnotation.getSimpleName() + " annotation was found in 'src'");
 		}
 		if (!errors.isEmpty()) {
 			throw new IllegalStateException(errors.toString());
@@ -77,7 +68,7 @@ public class Assignment2StructureTest {
 	    );
 	}
 	
-	@ParameterizedTest
+	@ParameterizedTest(name = ParameterizedTest.ARGUMENTS_PLACEHOLDER)
 	@ValueSource(classes = {NetworkAPI.class, ProcessAPI.class, ConceptualAPI.class })
 	public void checkAnnotationsExist(Class<? extends Annotation> apiAnnotation) throws Exception {
 		int numApisFound = 0;
@@ -93,7 +84,7 @@ public class Assignment2StructureTest {
 		List<String> errors = new ArrayList<>();
 		
 		if (numApisFound != 1) {
-			errors.add("No (or multiple) interface found with annotation " + apiAnnotation.getSimpleName() + " in 'src'");
+			errors.add("No (or more than one) interface found with annotation " + apiAnnotation.getSimpleName() + " in 'src'");
 			errors.add("Keep in mind that all APIs must be interfaces (not classes), and that each API annotation"
 					+ " must be on a different interface in its own .java file");
 		}
