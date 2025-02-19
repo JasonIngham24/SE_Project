@@ -1,7 +1,6 @@
 //Prototype Class For EngineManagerAPI
 
-package enginemangementapi;
-import src.annotations.enginemangementapi.ConceptualAPIPrototype;
+package seproject;
 public class EngineManagerAPIPrototype implements EngineManagerAPI {
 	
 	@Override

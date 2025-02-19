@@ -1,6 +1,4 @@
-package enginemangementapi;
-
-import src.annotations.enginemangementapi.ConceptualAPI;
+package seproject;
 
 @ConceptualAPI
 public interface EngineManagerAPI {
