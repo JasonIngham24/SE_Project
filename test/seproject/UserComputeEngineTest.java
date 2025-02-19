@@ -23,6 +23,7 @@ public class UserComputeEngineTest {
 	@BeforeEach
 	void setUp() { 
 		//MockitoAnnotations.openMocks(this); 
+		userComputeEngine = new UserComputeEngineImpl(mockSourceHandler, mockStorageHandler); 
 	}
 	
 	@Test 
