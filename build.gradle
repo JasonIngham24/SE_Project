@@ -32,8 +32,8 @@ test {
     useJUnitPlatform()
     filter {
         excludeTestsMatching "project.annotations.Assignment*"
+        setFailOnNoMatchingTests(false)
     }
-	setFailOnNoMatchingTests(false)
 }
 
 def grpcVersion = '1.59.1'
