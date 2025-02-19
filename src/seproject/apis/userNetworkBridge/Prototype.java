@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.Scanner;
-
-import seproject.annotations.NetworkAPIPrototype;
+import project.annotations.NetworkAPIPrototype;
 import seproject.apis.computeStore.SourceHandler;
 import seproject.apis.engineManager.StorageHandler;
+
 
 
 public class Prototype{

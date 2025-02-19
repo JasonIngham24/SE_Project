@@ -11,12 +11,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import seproject.annotations.ConceptualAPI;
-import seproject.annotations.ConceptualAPIPrototype;
-import seproject.annotations.NetworkAPI;
-import seproject.annotations.NetworkAPIPrototype;
-import seproject.annotations.ProcessAPI;
-import seproject.annotations.ProcessAPIPrototype;
+import project.annotations.ConceptualAPI;
+import project.annotations.ConceptualAPIPrototype;
+import project.annotations.NetworkAPI;
+import project.annotations.NetworkAPIPrototype;
+import project.annotations.ProcessAPI;
+import project.annotations.ProcessAPIPrototype;
 
 
 /**

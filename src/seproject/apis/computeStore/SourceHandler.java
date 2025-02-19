@@ -1,5 +1,5 @@
 package seproject.apis.computeStore;
-import seproject.annotations.ProcessAPI;
+import project.annotations.ProcessAPI;
 
 @ProcessAPI
 //interface to handle different types of input sources 
