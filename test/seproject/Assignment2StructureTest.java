@@ -1,6 +1,4 @@
 package seproject;
-
-
 import java.io.File;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -14,12 +12,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import seproject.ConceptualAPI;
-import seproject.ConceptualAPIPrototype;
-import seproject.NetworkAPI;
-import seproject.NetworkAPIPrototype;
-import seproject.ProcessAPI;
-import seproject.ProcessAPIPrototype;
+import seproject.annotations.ConceptualAPI;
+import seproject.annotations.ConceptualAPIPrototype;
+import seproject.annotations.NetworkAPI;
+import seproject.annotations.NetworkAPIPrototype;
+import seproject.annotations.ProcessAPI;
+import seproject.annotations.ProcessAPIPrototype;
 
 
 /**

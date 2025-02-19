@@ -1,4 +1,8 @@
-package seproject;
+package seproject.apis.userNetworkBridge;
+import seproject.annotations.NetworkAPI;
+import seproject.annotations.ProcessAPIPrototype;
+import seproject.apis.computeStore.SourceHandler;
+import seproject.apis.engineManager.StorageHandler;
 
 @NetworkAPI
 public interface UserComputeEngineAPI {
