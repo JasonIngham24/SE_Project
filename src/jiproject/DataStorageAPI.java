@@ -1,4 +1,5 @@
 // Main Interface for the Data Storage API
+package jiproject;
 import project.annotations.ProcessAPI;
 
 public interface DataStorageAPI {
