@@ -1,5 +1,5 @@
-package jiImplementations;
-import jiProject.DataStorageAPI;
+package jiimplementation;
+import jiproject.DataStorageAPI;
 import seproject.UserComputeEngineAPI;
 
 public class DataStorageAPIImpl implements DataStorageAPI {
