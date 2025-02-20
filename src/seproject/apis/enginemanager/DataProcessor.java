@@ -1,4 +1,4 @@
-package seproject.apis.engineManager;
+package seproject.apis.enginemanager;
 import project.annotations.ConceptualAPI;
 
 @ConceptualAPI

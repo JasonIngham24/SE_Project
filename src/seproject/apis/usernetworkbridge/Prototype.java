@@ -1,4 +1,4 @@
-package seproject.apis.userNetworkBridge;
+package seproject.apis.usernetworkbridge;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.net.URL;
@@ -7,8 +7,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.Scanner;
 import project.annotations.NetworkAPIPrototype;
-import seproject.apis.computeStore.SourceHandler;
-import seproject.apis.engineManager.StorageHandler;
+import seproject.apis.computestore.SourceHandler;
+import seproject.apis.enginemanager.StorageHandler;
 
 
 public class Prototype{

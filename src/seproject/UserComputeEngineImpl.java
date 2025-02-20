@@ -1,7 +1,7 @@
 package seproject;
 
-import seproject.apis.computeStore.SourceHandler;
-import seproject.apis.engineManager.StorageHandler;
+import seproject.apis.computestore.SourceHandler;
+import seproject.apis.enginemanager.StorageHandler;
 
 public class UserComputeEngineImpl {
 	
