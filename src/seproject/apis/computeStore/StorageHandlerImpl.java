@@ -1,6 +1,4 @@
-package seproject;
-import java.io.IOException; 
-import java.io.InputStream; 
+package seproject.apis.computeStore; 
 
 
 public class StorageHandlerImpl {
