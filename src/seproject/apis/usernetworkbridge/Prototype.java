@@ -2,8 +2,6 @@ package seproject.apis.usernetworkbridge;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.net.URL;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.Scanner;
 import project.annotations.NetworkAPIPrototype;
