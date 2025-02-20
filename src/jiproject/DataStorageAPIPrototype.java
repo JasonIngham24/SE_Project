@@ -11,7 +11,7 @@ public abstract class DataStorageAPIPrototype implements DataStorageAPI {
      * @return The retrieved data.
      */
     @ProcessAPIPrototype
-    public abstract String readData(String source);
+    public abstract int readData(String source);
 
     /**
      * Prototype method for writing data.

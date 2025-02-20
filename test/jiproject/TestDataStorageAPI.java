@@ -2,17 +2,20 @@ package jiproject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import jiimplementation.DataStorageAPIImpl;
+import seproject.UserComputeEngineAPI;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verifyNoInteractions;
+
 
 public class TestDataStorageAPI {
 
     private DataStorageAPIImpl dataStorageAPI;
 
     @Mock
-    private ComputeEngineAPI mockComputeEngineAPI; // Mocked dependency
+    private UserComputeEngineAPI mockComputeEngineAPI; // Mocked dependency
 
     @BeforeEach
     void setUp() {
@@ -23,7 +26,7 @@ public class TestDataStorageAPI {
     @Test
     void testReadDataReturnsEmptyString() {
         // When calling readData, expect an empty string
-        String result = dataStorageAPI.readData("test-source");
+        int result = dataStorageAPI.readData("test-source");
         assertEquals("", result, "Expected readData() to return an empty string.");
     }
 

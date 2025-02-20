@@ -13,9 +13,9 @@ public class DataStorageAPIImpl implements DataStorageAPI {
     }
 
     @Override
-    public String readData(String source) {
+    public int readData(String source) {
         // Placeholder implementation returning an empty string
-        return "";
+        return 0;
     }
 
     @Override
