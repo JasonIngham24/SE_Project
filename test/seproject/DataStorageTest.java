@@ -24,7 +24,7 @@ public class DataStorageTest {
     @Test
     void testReadDataReturnsEmptyString() {
         // When calling readData, expect an empty string
-        String result = dataStorageAPI.readData("test-source");
+        int result = dataStorageAPI.readData("test-source");
         assertEquals("", result, "Expected readData() to return an empty string.");
     }
 
