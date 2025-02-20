@@ -11,7 +11,7 @@ public interface DataStorageAPI {
      * @return The retrieved data.
      */
     @ProcessAPI
-    int readData(String source);
+    String readData(String source);
 
     /**
      * Writes data to a specified destination.

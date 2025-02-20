@@ -1,13 +1,14 @@
 package seproject.infrastructure;
+import java.util.List;
 
 public class InMemoryInputConfig {
-    private final int inputData;
+    private final List<Integer> inputData;
 
-    public InMemoryInputConfig(int inputData) {
+    public InMemoryInputConfig(List<Integer> inputData) {
         this.inputData = inputData;
     }
 
-    public int getInputData() {
+    public List<Integer> getInputData() {
         return inputData;
     }
 }

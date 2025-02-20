@@ -12,9 +12,9 @@ public class InMemoryDataStorageAPI implements DataStorageAPI {
     }
 
     @Override
-    public int readData(String source) {
+    public String readData(String source) {
         // Simulates reading by returning a concatenated string of input integers
-        return inputConfig.getInputData();
+        return inputConfig.getInputData().toString();
     }
 
     @Override
