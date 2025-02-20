@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.Scanner;
 
+import project.annotations.NetworkAPIPrototype;
+
 
 public class Prototype{
 	

@@ -1,5 +1,8 @@
 package seproject;
 
+import project.annotations.NetworkAPI;
+import project.annotations.ProcessAPIPrototype;
+
 @NetworkAPI
 public interface UserComputeEngineAPI {
 	
