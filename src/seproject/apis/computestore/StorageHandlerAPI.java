@@ -1,4 +1,4 @@
-package seproject;
+package seproject.apis.computestore;
 
 public interface StorageHandlerAPI {
 
