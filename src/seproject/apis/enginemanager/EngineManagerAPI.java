@@ -3,9 +3,13 @@ import project.annotations.ConceptualAPI;
 
 @ConceptualAPI
 public interface EngineManagerAPI {
+		
+	void setN(int n);								//set methods take the passed through "Handlers"
+	void setDelimiter(String dLim);
+	void setStorageLocation(String sL);
 	
-	void setData(int n);
-	int getData();
-	int sumOfNthEvenFibbonaciNums(int n);
+	
+	int sumOfNthEvenFibbonaciNums(int n);				//computes & returns value -- might become an object in the future
+	
 
 }
