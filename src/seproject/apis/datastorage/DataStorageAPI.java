@@ -1,4 +1,5 @@
 // Main Interface for the Data Storage API
+package seproject.apis.datastorage;
 import project.annotations.ProcessAPI;
 
 public interface DataStorageAPI {
