@@ -3,21 +3,22 @@ package seproject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-//import org.mockito.Mock;
-//import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 //@ExtendWith(MockitoExtension.class)
 public class UserComputeEngineTest {
 	
 	//Test class for UserComputeEngineImpl 
-	//@InjectMocks 
+	@InjectMocks 
 	private UserComputeEngineImpl userComputeEngine; 
 	
-	//@Mock 
+	@Mock 
 	private SourceHandler mockSourceHandler; 
 	
-	//@Mock
+	@Mock
 	private StorageHandler mockStorageHandler; 
 	
 	@BeforeEach
@@ -47,7 +48,7 @@ public class UserComputeEngineTest {
 	void testSendOutputDest() { 
 		String dest = "outputLocation"; 
 		
-		//Mockito.when(mockStorageHandler.toString()).thenReturn("Mocked StorageHandler"); 
+		Mockito.when(mockStorageHandler.toString()).thenReturn("Mocked StorageHandler"); 
 		
 		StorageHandler result = userComputeEngine.sendOutputDest(dest); 
 		
