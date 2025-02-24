@@ -5,6 +5,8 @@ import project.annotations.ProcessAPI;
 //interface to handle different types of input sources 
 public interface SourceHandler {
 	boolean isNetworkLocation(String source); 
-	boolean isLocalFile(String source); 
+	boolean isLocalFile(String source);
+	String getDLim();
+	int getSource(); 
 
 }

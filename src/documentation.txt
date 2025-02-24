@@ -1,0 +1,21 @@
+
+Project Documentation
+
+This file serves as a reference for documenting the functionality of various methods used within the project.
+Each entry includes a method name, its purpose, input parameters, return values, and any relevant notes about its behavior.
+
+Structure:
+-- Method Name: Name of the method.
+
+-- Description: Brief explanation of what the method does.
+
+-- Parameters: List of input parameters (if any) with their expected types.
+
+-- Return Value: Description of what the method returns (if applicable).
+
+-- Notes: Additional details, such as edge cases, performance considerations, or important dependencies.
+
+This document is intended to assist in understanding and maintaining the codebase efficiently. 
+It should be updated regularly as the codebase evolves 
+________________________________________________________________________________________________________________________________
+
