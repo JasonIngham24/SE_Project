@@ -1,7 +1,8 @@
-package seproject.apis.enginemanager;
+package seproject.apis.computestore;
 import project.annotations.ConceptualAPI;
+import project.annotations.ProcessAPI;
 
-@ConceptualAPI
+@ProcessAPI
 public interface StorageHandler {
 	boolean isValidDest(String source);
     
