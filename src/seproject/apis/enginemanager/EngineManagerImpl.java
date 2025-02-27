@@ -3,7 +3,7 @@ package seproject.apis.enginemanager;
 
 public class EngineManagerImpl implements EngineManagerAPI {
 	// Attributes
-	public int n;
+	int n;
 	int[] fibonacci = new int[n];
 
 	// Constructors
