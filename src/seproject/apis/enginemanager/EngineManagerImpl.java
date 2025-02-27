@@ -3,12 +3,12 @@ package seproject.apis.enginemanager;
 
 public class EngineManagerImpl implements EngineManagerAPI {
 	// Attributes
-	int n;
-	int[] fibonacci = new int[n];
+	int input;
+	int[] fibonacci = new int[input];
 
 	// Constructors
 	public EngineManagerImpl(int n) {
-		this.n = n;
+		this.input = n;
 	}
 
 	@Override
