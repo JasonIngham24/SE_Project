@@ -7,7 +7,7 @@ public interface SourceHandler {
 	boolean isNetworkLocation(String source); 
 	boolean isLocalFile(String source);
 
-	String readData(String inputSource);
+	String readIntegers(String inputSource);
 	String getDelimiter(); 
 	String setSource(); 
 	String setDelimiter(); 

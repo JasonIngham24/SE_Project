@@ -14,10 +14,11 @@ public class SourceHandlerImpl {
 	private String sourcePath;
 	private String delimiter;
 
-	public SourceHandlerImpl(boolean isNetworkLocation, boolean isLocalFile, String sourcePath) {
+	public SourceHandlerImpl(boolean isNetworkLocation, boolean isLocalFile, String sourcePath, String delimiter) {
 		this.isNetworkLocation = isNetworkLocation;
 		this.isLocalFile = isLocalFile;
 		this.sourcePath = sourcePath; 
+		this.delimiter = delimiter; 
 	}
 
 	/* readIntegers()

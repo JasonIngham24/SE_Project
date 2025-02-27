@@ -4,18 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import seproject.UserComputeEngineImpl;
+import seproject.apis.computestore.SourceHandler;
 import seproject.apis.datastorage.DataStorageAPI;
 
 public class ComputeEngineCoordinator {
 
 	private final DataStorageAPI dataStorage; 
-	private final EngineManagerAPI engineManager; 
+	private final EngineManagerAPI engineManager;
 	private final UserComputeEngineImpl userComputeEngine; 
 
 	public ComputeEngineCoordinator(DataStorageAPI ds, UserComputeEngineImpl uc, EngineManagerAPI em) {
 		this.dataStorage = ds; 
-		this.engineManager = em; 
 		this.userComputeEngine = uc; 
+		this.engineManager = em; 
 	}
 
 	/*
@@ -40,7 +41,7 @@ public class ComputeEngineCoordinator {
 		//step 4: pass integers to the compute component and get results 
 		List<Integer> results = computeResults(numbers);
 
-		//step 5 
+		//step 5 --> request/confirm that the results have been successfully written to the data storage location 
 		boolean writeSuccess = dataStorage.writeData(outputDest, formatResults(results));
 		if (!writeSuccess) { 
 			return "Failed to write results to the destination.";
@@ -59,7 +60,6 @@ public class ComputeEngineCoordinator {
 	private List<Integer> computeResults(List<Integer> numbers) { 
 		List<Integer> results = new ArrayList<>(); 
 		for (Integer number : numbers) { 
-			engineManager.setData(number);
 			int result = engineManager.sumOfNthEvenFibbonaciNums(number); 
 			results.add(result); 
 		}

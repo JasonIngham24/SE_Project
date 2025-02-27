@@ -31,13 +31,14 @@ public class UserComputeEngineImpl {
 		System.out.println("sendOutputDest called with dest: " + dest); 
 		return storageHandler; 
 	}
+	
 
 
 
 	public List<Integer> getInput(String inputSource) {
 		List<Integer> numbers = new ArrayList<>(); 
 		
-		String rawData = sourceHandler.readData(inputSource); 
+		String rawData = sourceHandler.readIntegers(inputSource); 
 		if (rawData != null && !rawData.isEmpty()) {
 			String [] parts = rawData.split(sourceHandler.getDelimiter()); 
 			for (String part : parts) {
