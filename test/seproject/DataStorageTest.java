@@ -10,7 +10,7 @@ import seproject.apis.usernetworkbridge.UserComputeEngineAPI;
 
 
 public class DataStorageTest {
-	private DataStorageAPIImpl dataStorageAPI;
+	private FileBasedDataStorageImpl dataStorageAPI;
 
     @Mock
     private UserComputeEngineAPI mockComputeEngineAPI; // Mocked dependency
@@ -18,7 +18,7 @@ public class DataStorageTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        dataStorageAPI = new DataStorageAPIImpl(mockComputeEngineAPI);
+        dataStorageAPI = new FileBasedDataStorageImpl();
     }
 
     @Test
