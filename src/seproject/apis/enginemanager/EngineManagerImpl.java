@@ -1,40 +1,50 @@
 //package seproject.apis.computestore;
 package seproject.apis.enginemanager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EngineManagerImpl implements EngineManagerAPI {
 	// Attributes
 	int input;
-	int[] fibonacci = new int[input];
-
+	
 	// Constructors
-	public EngineManagerImpl(int n) {
-		this.input = n;
+	public EngineManagerImpl(int input) {
+		this.input = input;
 	}
-
+	//methods
 	@Override
-	public int sumOfNthEvenFibbonaciNums(int n) {
-
-		int[] evenNums = new int[n / 2];
-		// base case
-		if (n <= 1) {
-			return n;
-		}
-
-		// adds fibonacci sequence to array.
-		fibonacci[n] = sumOfNthEvenFibbonaciNums(n - 1) + sumOfNthEvenFibbonaciNums(n - 2);
-
-		if (fibonacci[n] % 2 == 0) {
-			int count = 0;
-			while (evenNums[count] != 0) {
-				count++;
+	public int sumOfNthEvenFibbonaciNums(int input) {
+		//Holds Even Fibbonacci Numbers
+		List<Integer> evenFibonacciNums = new ArrayList<>();
+		
+		int sum = 0;
+		
+		//Set up first step of the sequence
+		int first = 0;
+		int second =1;
+		while(input > 1) {
+			input--;
+			
+			int next = first + second; 
+			
+			//Assign values for next step of the sequence
+			first = second;
+			second = next;
+			
+				//add even numbers to list;
+			if (next % 2 == 0) {
+					
+					evenFibonacciNums.add(next);
 			}
-			evenNums[count] = fibonacci[n];
+				
 		}
-
-		return calculateSum(evenNums);
+		return calculateSum(evenFibonacciNums);
 	}
-
-	public int calculateSum(int[] evenNums) {
+		
+	
+	//helper method to calculate sum
+	public int calculateSum(List<Integer> evenNums) {
 		int sum = 0;
 		for (int currentNumber : evenNums) {
 			sum += currentNumber;

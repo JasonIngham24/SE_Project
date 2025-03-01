@@ -38,8 +38,8 @@ public class EngineManagerTest {
 
 	@Test
 	public void sumOfNthEvenFibbonaciTest() {
-		EngineManagerAPI enginemanager = new EngineManagerImpl(9);
-		int result = enginemanager.sumOfNthEvenFibbonaciNums(9);
+		EngineManagerAPI enginemanager = new EngineManagerImpl(10);
+		int result = enginemanager.sumOfNthEvenFibbonaciNums(10);
 		System.out.println("Engine Manager: Collected Data From UserComputeEngine.");
 		//user inputs 9 and gets 2+8+34
 		Assertions.assertEquals(result, 44);
