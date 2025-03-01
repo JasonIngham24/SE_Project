@@ -1,26 +1,37 @@
 package seproject;
+
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
 import seproject.apis.computestore.SourceHandler;
 import seproject.apis.computestore.StorageHandler;
 
-//@ExtendWith(MockitoExtension.class)
+import org.junit.jupiter.api.extension.ExtendWith;
+
+
+
 public class UserComputeEngineTest {
 	
 	//Test class for UserComputeEngineImpl 
-	//@InjectMocks 
+
+	@InjectMocks 
 	private UserComputeEngineImpl userComputeEngine; 
 	
-	//@Mock 
+	@Mock 
 	private SourceHandler mockSourceHandler; 
 	
-	//@Mock
+	@Mock
 	private StorageHandler mockStorageHandler; 
 	
 	@BeforeEach
-	void setUp() { 
-		//MockitoAnnotations.openMocks(this); 
+	void setUp() {  
+		MockitoAnnotations.openMocks(this); 
 		userComputeEngine = new UserComputeEngineImpl(mockSourceHandler, mockStorageHandler); 
 	}
 	
@@ -34,7 +45,7 @@ public class UserComputeEngineTest {
 		String source = "inputData"; 
 		String delimiter = ","; 
 		
-		//Mockito.when(mockSourceHandler.toString()).thenReturn("Mocked SourceHandler");
+		Mockito.when(mockSourceHandler.toString()).thenReturn("Mocked SourceHandler");
 		
 		SourceHandler result = userComputeEngine.sendInputSource(source, delimiter); 
 		
@@ -45,8 +56,8 @@ public class UserComputeEngineTest {
 	void testSendOutputDest() { 
 		String dest = "outputLocation"; 
 		
-		//Mockito.when(mockStorageHandler.toString()).thenReturn("Mocked StorageHandler"); 
-		
+		Mockito.when(mockStorageHandler.toString()).thenReturn("Mocked StorageHandler"); 
+
 		StorageHandler result = userComputeEngine.sendOutputDest(dest); 
 		
 		Assertions.assertEquals(mockStorageHandler, result);
