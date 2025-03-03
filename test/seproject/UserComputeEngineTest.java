@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import implementations.UserComputeEngineImpl;
 import seproject.apis.usernetworkbridge.handlers.SourceHandler;
 import seproject.apis.usernetworkbridge.handlers.StorageHandler;
 

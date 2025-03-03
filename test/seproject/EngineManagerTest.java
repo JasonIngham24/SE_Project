@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import seproject.apis.enginemanager.EngineManagerAPI;
 import seproject.apis.usernetworkbridge.UserComputeEngineAPI;
 import seproject.apis.datastorage.DataStorageAPI;
-import seproject.apis.enginemanager.EngineManagerImpl;
+import implementations.EngineManagerImpl;
 
 public class EngineManagerTest {
 
