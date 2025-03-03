@@ -4,7 +4,7 @@ import java.nio.file.Paths;
 import java.net.URL;
 import java.net.MalformedURLException;
 import java.util.Scanner;
-import project.annotations.NetworkAPIPrototype;
+import annotations.NetworkAPIPrototype;
 import seproject.apis.computestore.SourceHandler;
 import seproject.apis.computestore.StorageHandler;
 
