@@ -3,8 +3,8 @@ package seproject.apis.enginemanager;
 import java.util.ArrayList;
 import java.util.List;
 
-import seproject.UserComputeEngineImpl;
-import seproject.apis.computestore.SourceHandler;
+import implementations.UserComputeEngineImpl;
+import seproject.apis.usernetworkbridge.handlers.SourceHandler;
 import seproject.apis.datastorage.DataStorageAPI;
 
 public class ComputeEngineCoordinator {

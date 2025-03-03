@@ -4,9 +4,9 @@ import java.nio.file.Paths;
 import java.net.URL;
 import java.net.MalformedURLException;
 import java.util.Scanner;
-import project.annotations.NetworkAPIPrototype;
-import seproject.apis.computestore.SourceHandler;
-import seproject.apis.computestore.StorageHandler;
+import annotations.NetworkAPIPrototype;
+import seproject.apis.usernetworkbridge.handlers.SourceHandler;
+import seproject.apis.usernetworkbridge.handlers.StorageHandler;
 
 
 public class Prototype{

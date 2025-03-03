@@ -1,6 +1,6 @@
 //Prototype Class For EngineManagerAPI
 package seproject.apis.enginemanager;
-import project.annotations.ConceptualAPIPrototype;
+import annotations.ConceptualAPIPrototype;
 
 public class EngineManagerAPIPrototype implements EngineManagerAPI {
 	
