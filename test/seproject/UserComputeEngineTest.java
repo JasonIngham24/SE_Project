@@ -9,8 +9,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import seproject.apis.computestore.SourceHandler;
-import seproject.apis.computestore.StorageHandler;
+import seproject.apis.usernetworkbridge.handlers.SourceHandler;
+import seproject.apis.usernetworkbridge.handlers.StorageHandler;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 
