@@ -1,6 +1,7 @@
 package seproject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -11,13 +12,15 @@ import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import seproject.apis.datastorage.DataStorageAPI;
 import seproject.apis.enginemanager.ComputeEngineCoordinator;
 import seproject.apis.enginemanager.EngineManagerAPI;
 import seproject.exceptions.ComputationException;
+import implementations.UserComputeEngineImpl;
+
+
 
 public class ComputeEngineCoordinatorTest {
 
@@ -37,15 +40,10 @@ public class ComputeEngineCoordinatorTest {
 
 	@BeforeEach 
 	void setUp() {
-		MockitoAnnotations.openMocks(this); 
-		storage = Mockito.mock(DataStorageAPI.class); 
-		manager = Mockito.mock(EngineManagerAPI.class);
-		engine = Mockito.mock(UserComputeEngineImpl.class);
-
-		coordinator = new ComputeEngineCoordinator(storage, engine, manager); 
-
-
+	    MockitoAnnotations.openMocks(this);
+	    coordinator = new ComputeEngineCoordinator(storage, engine, manager);
 	}
+
 
 	@Test
 	void testStartComputationHandlesComputationFailure() {
@@ -105,13 +103,11 @@ public class ComputeEngineCoordinatorTest {
 	 * testStartComputation
 	 * Test function to ensure parameter verification works as expected
 	 */
-	@Test (expected = ComputationException.class)
-	void testStartComputation() throws ComputationException {
-		String input = "";
-		String output = ""; 
-		ComputeEngineCoordinator coordinator = new ComputeEngineCoordinator(storage, engine, manager); 
-
-		String results = coordinator.startComputation(input, output); 
+	@Test
+	void testStartComputationThrowsException() {
+	    assertThrows(ComputationException.class, () -> {
+	        coordinator.startComputation("", "");
+	    });
 	}
 
 

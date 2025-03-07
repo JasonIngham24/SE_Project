@@ -1,5 +1,7 @@
-package seproject.apis.computestore;
-import project.annotations.ProcessAPI;
+package seproject.apis.usernetworkbridge.handlers;
+import java.util.List;
+
+import annotations.ProcessAPI;
 
 @ProcessAPI
 //interface to handle different types of input sources 
@@ -7,7 +9,7 @@ public interface SourceHandler {
 	boolean isNetworkLocation(String source); 
 	boolean isLocalFile(String source);
 
-	String readIntegers(String inputSource);
+	List<Integer> readIntegers();
 	String getDelimiter(); 
 	String setSource(); 
 	String setDelimiter(); 

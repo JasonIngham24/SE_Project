@@ -1,6 +1,6 @@
 // Prototype Class for the Data Storage API
 package seproject.apis.datastorage;
-import project.annotations.ProcessAPIPrototype;
+import annotations.ProcessAPIPrototype;
 
 public abstract class DataStorageAPIPrototype implements DataStorageAPI {
 

@@ -1,4 +1,4 @@
-package seproject;
+package implementations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +19,14 @@ public class UserComputeEngineImpl {
 	}
 	
 
-	//issue - change to setInputSource to get input (for now, local file) from the user 
+	
 	public SourceHandler sendInputSource(String source, String delimiter) {
 		System.out.print("sendInputSource called with source: " + source + "and delimiter: " + delimiter);
 		return sourceHandler; 
 	}
 	
 
-	//issue - change to setOutputDest to read in the output destination from user 
+
 	public StorageHandler sendOutputDest(String dest) {
 		System.out.println("sendOutputDest called with dest: " + dest); 
 		return storageHandler; 
@@ -34,19 +34,16 @@ public class UserComputeEngineImpl {
 	
 
 
-	/*
-	 * getInput 
-	 * Method to retrieve file from sourcehandler and read in the integers to be processed 
-	 */
-	public List<Integer> getInput() {
+
+	public List<Integer> getInput(String inputSource) {
 		List<Integer> numbers = new ArrayList<>(); 
 		
-		List<Integer> results = sourceHandler.readIntegers(); 
-			for (Integer result : results) {
+		List<Integer> rawData = sourceHandler.readIntegers(); 
+			for (Integer data : rawData) {
 				try {
-					numbers.add(result); 
+					numbers.add(data); 
 				} catch (NumberFormatException e) {
-					System.out.println("Invalid number format: " + results);
+					System.out.println("Invalid number format: " + data);
 				}
 			}
 		

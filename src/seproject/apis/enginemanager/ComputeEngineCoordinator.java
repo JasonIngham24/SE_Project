@@ -3,9 +3,14 @@ package seproject.apis.enginemanager;
 import java.util.ArrayList;
 import java.util.List;
 
-import seproject.UserComputeEngineImpl;
-import seproject.apis.datastorage.DataStorageAPI;
+
 import seproject.exceptions.ComputationException;
+
+import implementations.UserComputeEngineImpl;
+import seproject.apis.usernetworkbridge.handlers.SourceHandler;
+import seproject.apis.datastorage.DataStorageAPI;
+
+
 
 public class ComputeEngineCoordinator {
 
@@ -24,6 +29,7 @@ public class ComputeEngineCoordinator {
 	 * Receives input location, processes the computation, and writes results 
 	 * @param inputSource --> source location for input data 
 	 */
+
 
 	public String startComputation(String inputSource, String outputDest) throws ComputationException { 
 		try {
@@ -62,6 +68,7 @@ public class ComputeEngineCoordinator {
 		} catch (Exception e) {
 			throw new ComputationException("An unexpected error occurred during computation."); 
 		}
+
 		return "Computation completed successfully."; 
 	}
 
@@ -74,6 +81,7 @@ public class ComputeEngineCoordinator {
 
 	private List<Integer> computeResults(List<Integer> numbers) { 
 		List<Integer> results = new ArrayList<>(); 
+
 		try {
 			for (Integer number : numbers) { 
 				int result = engineManager.sumOfNthEvenFibbonaciNums(number); 
@@ -81,10 +89,12 @@ public class ComputeEngineCoordinator {
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("Error during computation" + e.getMessage());
+
 		}
 
 		return results; 
 	}
+
 
 
 	/*
@@ -104,5 +114,6 @@ public class ComputeEngineCoordinator {
 		} catch (Exception e) {
 			throw new RuntimeException("Error formatting results " + e.getMessage());
 		}
+
 	}
 }

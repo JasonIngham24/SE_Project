@@ -1,4 +1,4 @@
-package seproject.apis.computestore;
+package seproject.apis.usernetworkbridge.handlers;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -30,7 +30,7 @@ public class SourceHandlerImpl {
 	public List<Integer> readIntegers() throws IOException {
 		List<Integer> numbers = new ArrayList<>(); 
 		BufferedReader reader = null; 
-
+		
 		try {
 			if (isNetworkLocation) { 
 				URL url = new URL(sourcePath); 
@@ -40,19 +40,11 @@ public class SourceHandlerImpl {
 			} else { 
 				throw new IOException("Unsupported Source Type."); 
 			}
-
+			
 			String line; 
-			while ((line = reader.readLine()) != null) {
-			    String[] tokens = line.split(delimiter); 
-			    for (String token : tokens) {
-			        try {
-			            numbers.add(Integer.parseInt(token.trim()));
-			        } catch (NumberFormatException e) {
-			            System.err.println("Skipping invalid entry: " + token);
-			        }
-			    }
+			while((line = reader.readLine()) != null) {
+				numbers.add(Integer.parseInt(line.trim()));
 			}
-
 		} finally { 
 			if (reader != null) {
 				reader.close(); 
@@ -60,11 +52,11 @@ public class SourceHandlerImpl {
 		}
 		return numbers; 
 	}
-
+	
 	public void setSource(String source) { 
 		this.sourcePath = source; 
 	}
-
+	
 	public void setDelimiter(String delimiter) {
 		this.delimiter = delimiter;
 	}
