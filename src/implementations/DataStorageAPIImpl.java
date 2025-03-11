@@ -2,15 +2,17 @@ package implementations;
 
 import seproject.apis.datastorage.DataStorageAPI;
 import seproject.apis.usernetworkbridge.UserComputeEngineAPI;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
 public class DataStorageAPIImpl implements DataStorageAPI {
 
-    // Fields for any APIs that this implementation may need to call
     private final UserComputeEngineAPI computeEngineAPI;
 
-    // Constructor initializing dependencies
+    // Constructor validating dependencies
     public DataStorageAPIImpl(UserComputeEngineAPI computeEngineAPI) {
         if (computeEngineAPI == null) {
             throw new IllegalArgumentException("ComputeEngineAPI cannot be null");
@@ -20,40 +22,46 @@ public class DataStorageAPIImpl implements DataStorageAPI {
 
     @Override
     public String readData(String source) {
-        // Validate that source is not null or empty
         if (source == null || source.trim().isEmpty()) {
-            throw new IllegalArgumentException("Source file path cannot be null or empty");
+            return "Error: Source file path cannot be null or empty.";
         }
 
-        // Validate that the file exists before attempting to read
         Path filePath = Path.of(source);
         if (!Files.exists(filePath) || !Files.isReadable(filePath)) {
-            throw new IllegalArgumentException("Source file does not exist or is not readable: " + source);
+            return "Error: Source file does not exist or is not readable: " + source;
         }
 
-        // Placeholder implementation returning an empty string
-        return "";
+        try {
+            return Files.readString(filePath);
+        } catch (IOException e) {
+            return "Error: Failed to read file due to an I/O issue: " + e.getMessage();
+        } catch (Exception e) {
+            return "Error: An unexpected error occurred while reading the file.";
+        }
     }
 
     @Override
     public boolean writeData(String destination, String data) {
-        // Validate that destination is not null or empty
         if (destination == null || destination.trim().isEmpty()) {
-            throw new IllegalArgumentException("Destination file path cannot be null or empty");
+            return false;
         }
 
-        // Validate that data is not null (empty string is allowed)
         if (data == null) {
-            throw new IllegalArgumentException("Data to be written cannot be null");
+            return false;
         }
 
-        // Validate that the destination file is writable (if it exists)
         Path filePath = Path.of(destination);
         if (Files.exists(filePath) && !Files.isWritable(filePath)) {
-            throw new IllegalArgumentException("Destination file exists but is not writable: " + destination);
+            return false;
         }
 
-        // Placeholder implementation returning false (failure)
-        return false;
+        try {
+            Files.writeString(filePath, data, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            return true;
+        } catch (IOException e) {
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
