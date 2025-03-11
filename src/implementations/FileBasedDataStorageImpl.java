@@ -10,15 +10,21 @@ public class FileBasedDataStorageImpl implements DataStorageAPI {
 
     @Override
     public String readData(String source) {
-        Path filePath = Path.of(source);
-        if (!Files.exists(filePath)) {
-            return ""; // Return empty string if the file does not exist
+    	if (source == null || source.trim().isEmpty()) {
+            return "Error: Source file path cannot be null or empty.";
         }
+
+        Path filePath = Path.of(source);
+        if (!Files.exists(filePath) || !Files.isReadable(filePath)) {
+            return "Error: Source file does not exist or is not readable.";
+        }
+
         try {
             return Files.readString(filePath);
         } catch (IOException e) {
-            e.printStackTrace();
-            return ""; // Return empty string on error
+            return "Error: Failed to read file due to an I/O issue.";
+        } catch (Exception e) {
+            return "Error: An unexpected error occurred while reading the file.";
         }
     }
 
