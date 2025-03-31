@@ -44,7 +44,7 @@ public class ComputeEngineCoordinatorTest {
 	    coordinator = new ComputeEngineCoordinator(storage, engine, manager);
 	}
 
-
+	
 	@Test
 	void testStartComputationHandlesComputationFailure() {
 		try {

@@ -1,26 +1,67 @@
 package implementations;
+
 import seproject.apis.datastorage.DataStorageAPI;
 import seproject.apis.usernetworkbridge.UserComputeEngineAPI;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+
 public class DataStorageAPIImpl implements DataStorageAPI {
 
-    // Fields for any APIs that this implementation may need to call
     private final UserComputeEngineAPI computeEngineAPI;
 
-    // Constructor initializing dependencies
+    // Constructor validating dependencies
     public DataStorageAPIImpl(UserComputeEngineAPI computeEngineAPI) {
+        if (computeEngineAPI == null) {
+            throw new IllegalArgumentException("ComputeEngineAPI cannot be null");
+        }
         this.computeEngineAPI = computeEngineAPI;
     }
 
     @Override
     public String readData(String source) {
-        // Placeholder implementation returning an empty string
-        return "";
+        if (source == null || source.trim().isEmpty()) {
+            return "Error: Source file path cannot be null or empty.";
+        }
+
+        Path filePath = Path.of(source);
+        if (!Files.exists(filePath) || !Files.isReadable(filePath)) {
+            return "Error: Source file does not exist or is not readable: " + source;
+        }
+
+        try {
+            return Files.readString(filePath);
+        } catch (IOException e) {
+            return "Error: Failed to read file due to an I/O issue: " + e.getMessage();
+        } catch (Exception e) {
+            return "Error: An unexpected error occurred while reading the file.";
+        }
     }
 
     @Override
     public boolean writeData(String destination, String data) {
-        // Placeholder implementation returning false (failure)
-        return false;
+        if (destination == null || destination.trim().isEmpty()) {
+            return false;
+        }
+
+        if (data == null) {
+            return false;
+        }
+
+        Path filePath = Path.of(destination);
+        if (Files.exists(filePath) && !Files.isWritable(filePath)) {
+            return false;
+        }
+
+        try {
+            Files.writeString(filePath, data, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            return true;
+        } catch (IOException e) {
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
