@@ -20,6 +20,15 @@ public class SourceHandlerImpl {
 		this.sourcePath = sourcePath; 
 		this.delimiter = delimiter; 
 	}
+	
+	//default constructor with no parameters
+	public SourceHandlerImpl() {
+		this.isNetworkLocation = false; 
+		this.isLocalFile = false; 
+		this.sourcePath = " "; 
+		this.delimiter = ","; 
+		
+	}
 
 	/* readIntegers()
 	 * function to read in the integers for processing by the compute component

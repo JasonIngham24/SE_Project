@@ -12,9 +12,9 @@ public class SourceHandlerImpl {
 	private boolean isNetworkLocation;
 	private boolean isLocalFile; 
 	private String sourcePath;
-	private String delimiter;
+	private char delimiter;
 
-	public SourceHandlerImpl(boolean isNetworkLocation, boolean isLocalFile, String sourcePath, String delimiter) {
+	public SourceHandlerImpl(boolean isNetworkLocation, boolean isLocalFile, String sourcePath, char delimiter) {
 		this.isNetworkLocation = isNetworkLocation;
 		this.isLocalFile = isLocalFile;
 		this.sourcePath = sourcePath; 
@@ -26,6 +26,14 @@ public class SourceHandlerImpl {
 	 * @return an arraylist of integers that are being read into the file
 	 * checks the input source for a URL or a file location for processing 
 	 */
+
+	public SourceHandlerImpl() {
+		// TODO Auto-generated constructor stub
+		this.isNetworkLocation = false; 
+		this.isLocalFile = false; 
+		this.sourcePath = " "; 
+		this.delimiter = ','; 
+	}
 
 	public List<Integer> readIntegers() throws IOException {
 		List<Integer> numbers = new ArrayList<>(); 
@@ -57,7 +65,7 @@ public class SourceHandlerImpl {
 		this.sourcePath = source; 
 	}
 	
-	public void setDelimiter(String delimiter) {
+	public void setDelimiter(char delimiter) {
 		this.delimiter = delimiter;
 	}
 

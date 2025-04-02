@@ -3,12 +3,9 @@ package seproject.apis.enginemanager;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import seproject.exceptions.ComputationException;
-
-import implementations.UserComputeEngineImpl;
-import seproject.apis.usernetworkbridge.handlers.SourceHandler;
+import seproject.UserComputeEngineImpl;
 import seproject.apis.datastorage.DataStorageAPI;
+import seproject.exceptions.ComputationException;
 
 
 
@@ -28,10 +25,12 @@ public class ComputeEngineCoordinator {
 	 * Method to start computation process. 
 	 * Receives input location, processes the computation, and writes results 
 	 * @param inputSource --> source location for input data 
+	 * @param outputDest --> where the results of the computation will be sent to upon completion 
+	 * @param delimiter --> delimiter we will use to help format results data 
 	 */
 
-
-	public String startComputation(String inputSource, String outputDest) throws ComputationException { 
+	
+	public String startComputation(String inputSource, String outputDest, char delimiter) throws ComputationException { 
 		try {
 			//Validate Input parameters 
 			if (inputSource == null || inputSource.trim().isEmpty()) {
@@ -43,7 +42,7 @@ public class ComputeEngineCoordinator {
 			}
 
 			//step 1 - set up the input source 
-			userComputeEngine.sendInputSource(inputSource, ","); 
+			userComputeEngine.sendInputSource(inputSource, delimiter); 
 
 			//step 2 - set up output source 
 			userComputeEngine.sendOutputDest(outputDest);

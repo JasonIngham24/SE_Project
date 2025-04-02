@@ -14,12 +14,25 @@ public class StorageHandlerImpl {
 		this.destination = destination; 
 	}
 	
+	public StorageHandlerImpl() {
+		this.isValidDest = true; 
+		this.destination = " ";
+	}
+	
 	public void writeResults(List<Integer> results) throws IOException { 
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(destination))){
 			for (int result : results) {
 				writer.write(result + "\n");
 			}
 		}
+	}
+	
+	public void setDest(String dest) {
+		this.destination = dest; 
+	}
+	
+	public void setIsValidDest(boolean bool) {
+		this.isValidDest = bool; 
 	}
 	
 
