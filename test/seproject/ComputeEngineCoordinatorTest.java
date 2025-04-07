@@ -49,13 +49,13 @@ public class ComputeEngineCoordinatorTest {
 	void testStartComputationHandlesComputationFailure() {
 		try {
 			//Simulate successful input retrieval 
-			when(engine.getInput(anyString())).thenReturn(Arrays.asList(1, 2, 3)); 
+			when(engine.getInput()).thenReturn(Arrays.asList(1, 2, 3)); 
 
 			//Simulate computation failure 
 			when(manager.sumOfNthEvenFibbonaciNums(anyInt())).thenThrow(new RuntimeException("Computation Error"));
 
 			//Verify that the computation error is caught and translated into error message 
-			String result = coordinator.startComputation("validInput", "validOutput");
+			String result = coordinator.startComputation("validInput", "validOutput", ',');
 			assertEquals("An unexpected error occurred: Computation error", result);
 		} catch (ComputationException e) {
 			// TODO Auto-generated catch block
@@ -68,10 +68,10 @@ public class ComputeEngineCoordinatorTest {
 	void testStartComputationHandlesGetInputFailure() {
 		try {
 			//Mock getInput() throwing an exception
-			when(engine.getInput(anyString())).thenThrow(new RuntimeException("Data retrieval failed")); 
+			when(engine.getInput()).thenThrow(new RuntimeException("Data retrieval failed")); 
 
 			//Verify exception is handled and transformed into a meaningful return message
-			String result = coordinator.startComputation("validInput", "validOutput");
+			String result = coordinator.startComputation("validInput", "validOutput", ',');
 			assertEquals("An unexpected error occurred: Data retrieval failed", result); 
 		} catch (ComputationException e) {
 			// TODO Auto-generated catch block
@@ -84,14 +84,14 @@ public class ComputeEngineCoordinatorTest {
 	void testStartComputationHandlesWriteFailure() { 
 		try {
 			//Simulate successful input retrieval and computation
-			when(engine.getInput(anyString())).thenReturn(Arrays.asList(1, 2, 3)); 
+			when(engine.getInput()).thenReturn(Arrays.asList(1, 2, 3)); 
 			when(manager.sumOfNthEvenFibbonaciNums(anyInt())).thenReturn(10);
 
 			//Simulate write failure 
 			when(storage.writeData(anyString(), anyString())).thenReturn(false);
 
 			//Verify that failure is handled properly 
-			String result = coordinator.startComputation("validInput", "validOutput");
+			String result = coordinator.startComputation("validInput", "validOutput", ',');
 			assertEquals("Failed to write results to the destination", result); 
 		} catch (ComputationException e) {
 			// TODO Auto-generated catch block
@@ -106,7 +106,7 @@ public class ComputeEngineCoordinatorTest {
 	@Test
 	void testStartComputationThrowsException() {
 	    assertThrows(ComputationException.class, () -> {
-	        coordinator.startComputation("", "");
+	        coordinator.startComputation("validInput", "invalidOutput", ',');
 	    });
 	}
 

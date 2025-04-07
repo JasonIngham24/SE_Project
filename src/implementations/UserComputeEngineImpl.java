@@ -35,7 +35,7 @@ public class UserComputeEngineImpl {
 
 
 
-	public List<Integer> getInput(String inputSource) {
+	public List<Integer> getInput() {
 		List<Integer> numbers = new ArrayList<>(); 
 		
 		List<Integer> rawData = sourceHandler.readIntegers(); 

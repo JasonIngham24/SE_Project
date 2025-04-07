@@ -17,11 +17,11 @@ public class ComputeEngineCoordinator {
 
 	private final DataStorageAPI dataStorage; 
 	private final EngineManagerAPI engineManager;
-	private final UserComputeEngineImpl userComputeEngine; 
+	private final implementations.UserComputeEngineImpl userComputeEngine; 
 
-	public ComputeEngineCoordinator(DataStorageAPI ds, UserComputeEngineImpl uc, EngineManagerAPI em) {
+	public ComputeEngineCoordinator(DataStorageAPI ds, implementations.UserComputeEngineImpl engine, EngineManagerAPI em) {
 		this.dataStorage = ds; 
-		this.userComputeEngine = uc; 
+		this.userComputeEngine = engine; 
 		this.engineManager = em; 
 	}
 
