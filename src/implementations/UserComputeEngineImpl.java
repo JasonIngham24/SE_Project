@@ -1,5 +1,6 @@
 package implementations;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class UserComputeEngineImpl {
 	
 
 	
-	public SourceHandler sendInputSource(String source, String delimiter) {
+	public SourceHandler sendInputSource(String source, char delimiter) {
 		System.out.print("sendInputSource called with source: " + source + "and delimiter: " + delimiter);
 		return sourceHandler; 
 	}
@@ -38,12 +39,13 @@ public class UserComputeEngineImpl {
 	public List<Integer> getInput() {
 		List<Integer> numbers = new ArrayList<>(); 
 		
-		List<Integer> rawData = sourceHandler.readIntegers(); 
-			for (Integer data : rawData) {
+		List<Integer> results = null;
+		results = sourceHandler.readIntegers(); 
+			for (Integer result : results) {
 				try {
-					numbers.add(data); 
+					numbers.add(result); 
 				} catch (NumberFormatException e) {
-					System.out.println("Invalid number format: " + data);
+					System.out.println("Invalid number format: " + results);
 				}
 			}
 		
