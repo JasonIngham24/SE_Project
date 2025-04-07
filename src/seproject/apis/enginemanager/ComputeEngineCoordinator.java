@@ -2,6 +2,10 @@ package seproject.apis.enginemanager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import seproject.UserComputeEngineImpl;
 import seproject.apis.datastorage.DataStorageAPI;
@@ -48,7 +52,7 @@ public class ComputeEngineCoordinator {
 			userComputeEngine.sendOutputDest(outputDest);
 
 			//step 3 - request data storage to read Integers from the source location
-			List<Integer> numbers = userComputeEngine.getInput(inputSource); 
+			List<Integer> numbers = userComputeEngine.getInput(); 
 			
 			if (numbers == null || numbers.isEmpty()) {
 				throw new ComputationException("Failed to read integers from the input source."); 
@@ -80,17 +84,29 @@ public class ComputeEngineCoordinator {
 
 	private List<Integer> computeResults(List<Integer> numbers) { 
 		List<Integer> results = new ArrayList<>(); 
-
+		//using available processors to ensure we do not overload the user's system
+		ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+		
+		List<Future<Integer>> futures = new ArrayList<>(); 
 		try {
+			//implement multithreading at this phase - Sean E 
 			for (Integer number : numbers) { 
-				int result = engineManager.sumOfNthEvenFibbonaciNums(number); 
-				results.add(result); 
+				Future<Integer> future = executor.submit(() -> engineManager.sumOfNthEvenFibbonaciNums(number));  
+				futures.add(future); 
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("Error during computation" + e.getMessage());
-
 		}
-
+		
+		for(Future<Integer> future : futures) { 
+			try {
+				results.add(future.get()); 
+			} catch (InterruptedException | ExecutionException e) {
+				e.printStackTrace(); 
+				results.add(-1); 
+			}
+		}
+		executor.shutdown();
 		return results; 
 	}
 
