@@ -1,4 +1,4 @@
-package seproject.apis.usernetworkbridge.handlers;
+package seproject.apis.computestore;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -25,6 +25,14 @@ public class StorageHandlerImpl {
 				writer.write(result + "\n");
 			}
 		}
+	}
+
+	public void setDest(String dest) {
+		this.destination = dest;
+	}
+
+	public void setIsValidDest(boolean bool) {
+		this.isValidDest = bool;
 	}
 
 }

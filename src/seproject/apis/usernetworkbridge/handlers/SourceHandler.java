@@ -1,20 +1,26 @@
 package seproject.apis.usernetworkbridge.handlers;
+
+import java.util.List;
+
 import annotations.ProcessAPI;
 
 @ProcessAPI
 //interface to handle different types of input sources 
 public interface SourceHandler {
-	boolean isNetworkLocation(String source); 
+	boolean isNetworkLocation(String source);
+
 	boolean isLocalFile(String source);
 
-	String readIntegers(String inputSource);
-	String getDelimiter(); 
-	String setSource(); 
-	String setDelimiter(); 
-	
+	List<Integer> readIntegers();
+
+	String getDelimiter();
+
+	String setSource();
+
+	String setDelimiter();
 
 	String getDLim();
-	int getSource(); 
 
+	int getSource();
 
 }

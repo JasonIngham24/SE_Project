@@ -1,4 +1,4 @@
-package seproject.apis.usernetworkbridge.handlers;
+package seproject.apis.computestore;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,13 +12,22 @@ public class SourceHandlerImpl {
 	private boolean isNetworkLocation;
 	private boolean isLocalFile;
 	private String sourcePath;
-	private char delimiter;
+	private String delimiter;
 
-	public SourceHandlerImpl(boolean isNetworkLocation, boolean isLocalFile, String sourcePath, char delimiter) {
+	public SourceHandlerImpl(boolean isNetworkLocation, boolean isLocalFile, String sourcePath, String delimiter) {
 		this.isNetworkLocation = isNetworkLocation;
 		this.isLocalFile = isLocalFile;
 		this.sourcePath = sourcePath;
 		this.delimiter = delimiter;
+	}
+
+	// default constructor with no parameters
+	public SourceHandlerImpl() {
+		this.isNetworkLocation = false;
+		this.isLocalFile = false;
+		this.sourcePath = " ";
+		this.delimiter = ",";
+
 	}
 
 	/*
@@ -28,25 +37,6 @@ public class SourceHandlerImpl {
 	 * @return an arraylist of integers that are being read into the file checks the
 	 * input source for a URL or a file location for processing
 	 */
-
-	public SourceHandlerImpl() {
-		// TODO Auto-generated constructor stub
-		this.isNetworkLocation = true;
-		this.isLocalFile = false;
-		this.sourcePath = " ";
-		this.delimiter = ',';
-	}
-	/*
-	 * Helper Constructor to solve problem of isLocalFile check
-	 */
-	
-	public static SourceHandlerImpl createLocalFileHandler(String path, char delimiter) {
-	    SourceHandlerImpl handler = new SourceHandlerImpl();
-	    handler.setSource(path);
-	    handler.setDelimiter(delimiter);
-	    handler.isLocalFile = true;
-	    return handler;
-	}
 
 	public List<Integer> readIntegers() throws IOException {
 		List<Integer> numbers = new ArrayList<>();
@@ -64,8 +54,16 @@ public class SourceHandlerImpl {
 
 			String line;
 			while ((line = reader.readLine()) != null) {
-				numbers.add(Integer.parseInt(line.trim()));
+				String[] tokens = line.split(delimiter);
+				for (String token : tokens) {
+					try {
+						numbers.add(Integer.parseInt(token.trim()));
+					} catch (NumberFormatException e) {
+						System.err.println("Skipping invalid entry: " + token);
+					}
+				}
 			}
+
 		} finally {
 			if (reader != null) {
 				reader.close();
@@ -78,12 +76,8 @@ public class SourceHandlerImpl {
 		this.sourcePath = source;
 	}
 
-	public void setDelimiter(char delimiter) {
+	public void setDelimiter(String delimiter) {
 		this.delimiter = delimiter;
-	}
-	
-	public char getDelimiter() {
-		return this.delimiter; 
 	}
 
 }
