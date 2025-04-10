@@ -37,7 +37,7 @@ public class SourceHandlerImpl {
 		this.delimiter = ',';
 	}
 	/*
-	 * Helper Constructor 
+	 * Helper Constructor to solve problem of isLocalFile check
 	 */
 	
 	public static SourceHandlerImpl createLocalFileHandler(String path, char delimiter) {

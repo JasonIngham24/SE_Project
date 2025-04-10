@@ -80,9 +80,9 @@ public class TestMultiUser {
         Assert.assertEquals(singleThreaded, multiThreaded);
     }
     
-    private List<String> loadAllOutput(String prefix, int nThreads) throws IOException {
+    private List<String> loadAllOutput(String prefix, int threadCount) throws IOException {
         List<String> result = new ArrayList<>();
-        for (int i = 0; i < nThreads; i++) {
+        for (int i = 0; i < threadCount; i++) {
             File multiThreadedOut = new File(prefix + i);
             System.out.print("Checking file: " + multiThreadedOut.getAbsolutePath());
             result.addAll(Files.readAllLines(multiThreadedOut.toPath()));
