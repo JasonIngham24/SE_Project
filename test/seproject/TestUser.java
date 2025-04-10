@@ -19,15 +19,18 @@ public class TestUser {
 	}
 
 	public void run(String outputPath) {
-		char delimiter = ';';
-		String inputPath = "test" + File.separatorChar + "testInputFile.test";
+		char delimiter = ',';
+		String inputPath =  "C:\\Users\\jclic\\OneDrive\\Documents\\GitHub\\SE_Project\\test\\seproject\\testInputFile.csv";
 		
 		// TODO 4: Call the appropriate method(s) on the coordinator to get it to 
 		// run the compute job specified by inputPath, outputPath, and delimiter
 		try {
 			coordinator.startComputation(inputPath, outputPath, delimiter);
+			System.out.println("Computation done. Output exists? " + new File(outputPath).exists());
+
 		} catch (ComputationException e) {
 			// TODO Auto-generated catch block
+			System.err.println("Computation failed for: " + outputPath);
 			e.printStackTrace();
 		} 
 	

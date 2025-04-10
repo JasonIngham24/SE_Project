@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import implementations.EngineManagerImpl;
 import implementations.FileBasedDataStorageImpl;
+import implementations.UserComputeEngineImpl;
 import seproject.apis.datastorage.DataStorageAPI;
 import seproject.apis.enginemanager.ComputeEngineCoordinator;
 import seproject.apis.enginemanager.EngineManagerAPI;
@@ -30,7 +31,10 @@ public class TestMultiUser {
     public void initializeComputeEngine() {
         DataStorageAPI dataStorage = new FileBasedDataStorageImpl(); 
         EngineManagerAPI engineManager = new EngineManagerImpl(0); 
-        UserComputeEngineImpl userComputeEngine = new UserComputeEngineImpl(new SourceHandlerImpl(), new StorageHandlerImpl());
+        UserComputeEngineImpl userComputeEngine = new UserComputeEngineImpl(
+        	    SourceHandlerImpl.createLocalFileHandler("file:///C:/Users/jclic/OneDrive/Documents/GitHub/SE_Project/test/seproject/testInputFile.csv", ','),
+        	    new StorageHandlerImpl());
+
         coordinator = new ComputeEngineCoordinator(dataStorage, userComputeEngine, engineManager); 
     }
     
@@ -80,6 +84,7 @@ public class TestMultiUser {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < nThreads; i++) {
             File multiThreadedOut = new File(prefix + i);
+            System.out.print("Checking file: " + multiThreadedOut.getAbsolutePath());
             result.addAll(Files.readAllLines(multiThreadedOut.toPath()));
         }
         return result;
