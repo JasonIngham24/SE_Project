@@ -17,7 +17,12 @@ public class EngineManagerImpl implements EngineManagerAPI {
 	// methods
 	@Override
 	public int sumOfNthEvenFibbonaciNums(int input) {
-		// Holds Even Fibbonacci Numbers
+
+		
+		//Validate Input Before Computation
+		validateInput(input);
+		
+		//Holds Even Fibbonacci Numbers
 		List<Integer> evenFibonacciNums = new ArrayList<>();
 
 		int sum = 0;
@@ -33,8 +38,8 @@ public class EngineManagerImpl implements EngineManagerAPI {
 			// Assign values for next step of the sequence
 			first = second;
 			second = next;
-
-			// add even numbers to list;
+			
+			//add even numbers to list;
 			if (next % 2 == 0) {
 
 				evenFibonacciNums.add(next);
@@ -44,7 +49,7 @@ public class EngineManagerImpl implements EngineManagerAPI {
 		return calculateSum(evenFibonacciNums);
 	}
 
-	// helper method to calculate sum
+		//helper method to calculate sum
 	public int calculateSum(List<Integer> evenNums) {
 		int sum = 0;
 		for (int currentNumber : evenNums) {
@@ -54,5 +59,13 @@ public class EngineManagerImpl implements EngineManagerAPI {
 		return sum;
 
 	}
-
+	
+	 private void validateInput(Integer input) {
+	        if (input == null) {
+	            throw new IllegalArgumentException("User Input cannot be null");
+	        }
+	        if (input < 0) {
+	            throw new IllegalArgumentException("User Input cannot be negative");
+	        }
+	 }
 }
