@@ -87,7 +87,7 @@ public class ComputeEngineCoordinator {
 	 */
 
 
-	private List<Integer> computeResults(List<Integer> numbers) {
+	public List<Integer> computeResults(List<Integer> numbers) {
 
 		List<Integer> results = new ArrayList<>();
 		// using available processors to ensure we do not overload the user's system
