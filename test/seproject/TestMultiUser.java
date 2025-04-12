@@ -84,9 +84,14 @@ public class TestMultiUser {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < threadCount; i++) {
             File multiThreadedOut = new File(prefix + i);
+            if (!multiThreadedOut.exists()) {
+                System.err.println("[ERROR] Output file not found: " + multiThreadedOut.getAbsolutePath());
+                throw new IOException("Missing output file: " + multiThreadedOut.getAbsolutePath());
+            }
             System.out.print("Checking file: " + multiThreadedOut.getAbsolutePath());
             result.addAll(Files.readAllLines(multiThreadedOut.toPath()));
         }
+        
         return result;
     }
 }
