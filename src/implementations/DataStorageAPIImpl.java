@@ -1,7 +1,7 @@
 package implementations;
 
 import io.grpc.stub.StreamObserver;
-import seproject.grpc.datastorage.DataStorageProto.*;
+import seproject.grpc.datastorage.DataStorageProto;
 import seproject.grpc.datastorage.DataStorageServiceGrpc;
 
 import java.io.IOException;
