@@ -1,67 +1,83 @@
 package implementations;
 
-import seproject.apis.datastorage.DataStorageAPI;
-import seproject.apis.usernetworkbridge.UserComputeEngineAPI;
+import io.grpc.stub.StreamObserver;
+import seproject.grpc.datastorage.DataStorageProto;
+import seproject.grpc.datastorage.DataStorageServiceGrpc;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-public class DataStorageAPIImpl implements DataStorageAPI {
+/**
+ * gRPC Server-side implementation of the DataStorageService.
+ * Provides functionality to read and write data via file I/O.
+ */
+public class DataStorageAPIImpl extends DataStorageServiceGrpc.DataStorageServiceImplBase {
 
-	private final UserComputeEngineAPI computeEngineAPI;
+    /**
+     * Handles the gRPC call for reading file content.
+     *
+     * @param request           The gRPC ReadRequest containing the file path.
+     * @param responseObserver  StreamObserver used to return the ReadResponse.
+     */
+    @Override
+    public void readData(ReadRequest request, StreamObserver<ReadResponse> responseObserver) {
+        String source = request.getSource();
+        ReadResponse.Builder response = ReadResponse.newBuilder();
 
-	// Constructor validating dependencies
-	public DataStorageAPIImpl(UserComputeEngineAPI computeEngineAPI) {
-		if (computeEngineAPI == null) {
-			throw new IllegalArgumentException("ComputeEngineAPI cannot be null");
-		}
-		this.computeEngineAPI = computeEngineAPI;
-	}
+        // Validate the source path
+        if (source == null || source.trim().isEmpty()) {
+            response.setError("Source path cannot be empty.");
+        } else {
+            Path path = Path.of(source);
 
-	@Override
-	public String readData(String source) {
-		if (source == null || source.trim().isEmpty()) {
-			return "Error: Source file path cannot be null or empty.";
-		}
+            // Check if file exists and is readable
+            if (!Files.exists(path) || !Files.isReadable(path)) {
+                response.setError("File does not exist or is not readable.");
+            } else {
+                try {
+                    // Read content from file
+                    response.setContent(Files.readString(path));
+                } catch (IOException e) {
+                    response.setError("I/O error: " + e.getMessage());
+                }
+            }
+        }
 
-		Path filePath = Path.of(source);
-		if (!Files.exists(filePath) || !Files.isReadable(filePath)) {
-			return "Error: Source file does not exist or is not readable: " + source;
-		}
+        // Send response and complete the stream
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
 
-		try {
-			return Files.readString(filePath);
-		} catch (IOException e) {
-			return "Error: Failed to read file due to an I/O issue: " + e.getMessage();
-		} catch (Exception e) {
-			return "Error: An unexpected error occurred while reading the file.";
-		}
-	}
+    /**
+     * Handles the gRPC call for writing data to a file.
+     *
+     * @param request           The gRPC WriteRequest with destination path and data.
+     * @param responseObserver  StreamObserver used to return the WriteResponse.
+     */
+    @Override
+    public void writeData(WriteRequest request, StreamObserver<WriteResponse> responseObserver) {
+        String destination = request.getDestination();
+        String data = request.getData();
+        WriteResponse.Builder response = WriteResponse.newBuilder();
 
-	@Override
-	public boolean writeData(String destination, String data) {
-		if (destination == null || destination.trim().isEmpty()) {
-			return false;
-		}
+        // Validate inputs
+        if (destination == null || destination.trim().isEmpty() || data == null) {
+            response.setSuccess(false).setError("Invalid input: destination and data cannot be null or empty.");
+        } else {
+            Path path = Path.of(destination);
+            try {
+                // Write data to the file
+                Files.writeString(path, data, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                response.setSuccess(true); // Indicate success
+            } catch (IOException e) {
+                response.setSuccess(false).setError("I/O error: " + e.getMessage());
+            }
+        }
 
-		if (data == null) {
-			return false;
-		}
-
-		Path filePath = Path.of(destination);
-		if (Files.exists(filePath) && !Files.isWritable(filePath)) {
-			return false;
-		}
-
-		try {
-			Files.writeString(filePath, data, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-			return true;
-		} catch (IOException e) {
-			return false;
-		} catch (Exception e) {
-			return false;
-		}
-	}
+        // Send response and complete the stream
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
 }
