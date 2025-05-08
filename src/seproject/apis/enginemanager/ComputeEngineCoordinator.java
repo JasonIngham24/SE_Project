@@ -91,7 +91,7 @@ public class ComputeEngineCoordinator {
 
 		List<Integer> results = new ArrayList<>();
 		// using available processors to ensure we do not overload the user's system
-		ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+		ExecutorService executor = Executors.newFixedThreadPool(Math.min(numbers.size(), Runtime.getRuntime().availableProcessors()));
 
 		List<Future<Integer>> futures = new ArrayList<>();
 		try {
