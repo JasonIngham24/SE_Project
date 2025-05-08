@@ -13,6 +13,10 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import seproject.proto.ComputeServiceGrpc;
 
+import seproject.proto.ComputationRequest;
+import seproject.proto.ComputationResponse;
+
+
 public class ComputeClient {
 	
 	public static void main(String[] args) {
@@ -46,7 +50,9 @@ public class ComputeClient {
 				try {
 					numbers = Files.readAllLines(Path.of(inputPath))
 							.stream()
-							.flatMap(line -> Arrays.stream(line.split(","))).map(String::trim)
+							.flatMap(line -> Arrays.stream(line.split(",")))
+							.map(String::trim)
+
 							.map(Integer::parseInt)
 							.collect(Collectors.toList()); 
 				} catch(IOException e) {
@@ -57,6 +63,39 @@ public class ComputeClient {
 				System.out.println("Invalid Choice"); 
 				return; 
 			}
+
+			
+			System.out.println("Enter output filepath: ");
+			String outputPath = scnr.nextLine(); 
+			
+			System.out.println("Enter delimiter (press Enter for default ','): "); 
+			String delimiter = scnr.nextLine();
+			if (delimiter.isEmpty()) {
+				delimiter = ","; 
+			}
+			
+			ComputationRequest request = ComputationRequest.newBuilder()
+					.addAllNumbers(numbers)
+					.setOutputPath(outputPath)
+					.setDelimiter(delimiter)
+					.build();
+			
+			try {
+				ComputationResponse response = stub.startComputation(request); 
+				if(response.getSuccess()) {
+					System.out.println("Computation Succeeded!");
+					System.out.println("Message: " + response.getMessage()); 
+					System.out.print("Results: " + response.getResultsList());
+				} else {
+					System.out.println("Computation Failed: " + response.getMessage()); 
+				}
+			} catch (Exception e) {
+				System.out.print("Error during gRPC call: " + e.getMessage());
+				e.printStackTrace();
+			}
+			
+			channel.shutdown(); 
+
 		}
 	}
 
