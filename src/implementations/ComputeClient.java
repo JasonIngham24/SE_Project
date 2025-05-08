@@ -12,8 +12,10 @@ import java.util.stream.Collectors;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import seproject.proto.ComputeServiceGrpc;
+
 import seproject.proto.ComputationRequest;
 import seproject.proto.ComputationResponse;
+
 
 public class ComputeClient {
 	
@@ -50,6 +52,7 @@ public class ComputeClient {
 							.stream()
 							.flatMap(line -> Arrays.stream(line.split(",")))
 							.map(String::trim)
+
 							.map(Integer::parseInt)
 							.collect(Collectors.toList()); 
 				} catch(IOException e) {
@@ -60,6 +63,7 @@ public class ComputeClient {
 				System.out.println("Invalid Choice"); 
 				return; 
 			}
+
 			
 			System.out.println("Enter output filepath: ");
 			String outputPath = scnr.nextLine(); 
@@ -91,6 +95,7 @@ public class ComputeClient {
 			}
 			
 			channel.shutdown(); 
+
 		}
 	}
 
